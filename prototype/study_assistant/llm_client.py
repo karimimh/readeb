@@ -141,7 +141,8 @@ class LLMClient:
     def _call_openai(self, system: str, user: str, *, json_mode: bool) -> str:
         from openai import OpenAI
 
-        client = OpenAI()
+        base_url = os.getenv("OPENAI_BASE_URL")  # allows Groq / OpenRouter / etc.
+        client = OpenAI(base_url=base_url) if base_url else OpenAI()
         kwargs: dict[str, Any] = dict(
             model=self.config.model,
             temperature=self.config.temperature,
