@@ -1,0 +1,21 @@
+# --- Web framework ---
+Django>=5.0,<5.2
+djangorestframework>=3.15
+django-cors-headers>=4.4
+
+# --- Config ---
+python-dotenv>=1.0.1
+
+# --- Shared pipeline dependencies (reuses prototype/study_assistant) ---
+pydantic>=2.7
+pymupdf>=1.24
+pdfplumber>=0.11
+tenacity>=8.5
+
+# --- LLM providers (only the configured one needs credentials) ---
+openai>=1.40
+anthropic>=0.34
+google-generativeai>=0.7
+
+# --- Mind map rendering (optional; requires the graphviz system binary) ---
+graphviz>=0.20

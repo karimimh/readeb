@@ -1,4 +1,50 @@
-# AI PDF Study Assistant - Research & Prototype Notebook
+# readeb — AI PDF Study Assistant
+
+readeb turns university textbook PDFs into study materials: summaries,
+flashcards, quizzes, key concepts & definitions, mind maps, audio lesson
+scripts and exam-ready notes.
+
+The project has three parts:
+
+| Folder | What it is |
+| ------ | ---------- |
+| [`prototype/`](prototype/) | Research notebook + reusable `study_assistant` pipeline (validation phase). |
+| [`backend/`](backend/) | Production API — Django + Django REST Framework. Reuses the prototype pipeline. |
+| [`frontend/`](frontend/) | Production web UI — Next.js + TypeScript + Tailwind. |
+
+## Run the full stack
+
+Two terminals:
+
+```bash
+# 1) Backend (http://localhost:8000)
+cd backend
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py runserver 8000
+```
+
+```bash
+# 2) Frontend (http://localhost:3000)
+cd frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Open http://localhost:3000, upload a PDF, and the generated study materials
+appear once processing completes.
+
+> By default the backend runs in **offline mode** (no API keys, no token cost)
+> using a deterministic generator. Set `USE_REAL_LLM=True` plus a provider API
+> key in `backend/.env` to use real LLM generation. See
+> [`backend/README.md`](backend/README.md).
+
+---
+
+# Appendix: Research & Prototype Notebook Specification
 
 ## Goal
 
