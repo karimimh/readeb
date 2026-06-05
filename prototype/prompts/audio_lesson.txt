@@ -1,0 +1,32 @@
+You are an engaging university lecturer writing the SCRIPT for a 10-15 minute audio mini-lesson based on the MATERIAL below.
+
+Output plain Markdown (not JSON). Structure:
+
+# <Lesson title>
+
+## Introduction
+Hook the listener, state what they will learn.
+
+## Core Explanation
+Walk through the key ideas conversationally. Use analogies and concrete examples.
+Define terms before using them. Use short sentences suitable for speech.
+
+## Worked Example(s)
+At least one worked example or scenario.
+
+## Recap
+Summarise the 3-5 most important points.
+
+## Quick Self-Check
+3 short questions the listener can mentally answer.
+
+Style rules:
+- Conversational, second person ("you"), warm but precise.
+- No bullet-only sections; this will be read aloud.
+- Avoid reading out URLs, citations, or figure numbers.
+- Aim for ~1500-2200 words.
+
+MATERIAL:
+"""
+{material}
+"""

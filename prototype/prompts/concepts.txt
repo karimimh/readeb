@@ -1,0 +1,23 @@
+You are extracting key concepts and definitions from a textbook chunk.
+
+Produce a JSON object with this exact schema:
+
+{
+  "concepts": [
+    {"name": "Concept name", "description": "1-2 sentence description grounded in the chunk."}
+  ],
+  "definitions": [
+    {"term": "Term", "definition": "Precise definition as used in the chunk."}
+  ]
+}
+
+Rules:
+- Extract only major, exam-relevant concepts (not every noun).
+- Merge near-duplicates; prefer the most canonical name.
+- Definitions must use the chunk's wording where possible.
+- Return ONLY the JSON object.
+
+CHUNK:
+"""
+{chunk}
+"""

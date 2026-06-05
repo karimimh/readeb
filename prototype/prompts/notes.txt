@@ -1,0 +1,32 @@
+You are producing condensed, exam-ready study notes from the MATERIAL below.
+
+Output plain Markdown using this exact section layout:
+
+# {topic}
+
+## Important Concepts
+- Bullet list, each item 1-2 sentences.
+
+## Definitions
+- **Term** — definition.
+
+## Examples
+- Concrete worked examples or scenarios.
+
+## Common Exam Questions
+- Likely exam questions (no answers).
+
+## Quick Revision Sheet
+A compact bullet summary a student could glance at 10 minutes before an exam.
+
+Rules:
+- Stay grounded in the MATERIAL. Do not invent.
+- Be dense and skimmable. No filler sentences.
+- Preserve formulas verbatim. Use inline `code` or $LaTeX$ where appropriate.
+
+TOPIC: {topic}
+
+MATERIAL:
+"""
+{material}
+"""

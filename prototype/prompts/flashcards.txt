@@ -1,0 +1,23 @@
+You are generating high-quality flashcards from a textbook chunk for university-level revision.
+
+Produce between 10 and 20 flashcards as a JSON object with this exact schema:
+
+{
+  "flashcards": [
+    {"question": "...", "answer": "..."}
+  ]
+}
+
+Rules:
+- Focus on concepts, definitions, formulas, mechanisms, and cause/effect.
+- Each question must be answerable from the CHUNK alone.
+- Answers should be concise (1-3 sentences) but complete.
+- Avoid trivial facts, page references, or author trivia.
+- Avoid duplicates and near-duplicates.
+- Prefer "Why / How / Define / Compare" style over "What is the name of...".
+- Return ONLY the JSON object.
+
+CHUNK:
+"""
+{chunk}
+"""

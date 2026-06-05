@@ -1,0 +1,27 @@
+You are building a hierarchical mind map from a body of textbook material.
+
+Produce a JSON object with this exact recursive schema:
+
+{
+  "root": "Top-level topic name",
+  "children": [
+    {
+      "root": "Sub-topic",
+      "children": [
+        {"root": "Leaf concept", "children": []}
+      ]
+    }
+  ]
+}
+
+Rules:
+- The tree should be 2-4 levels deep.
+- Use short, noun-phrase node labels (max ~6 words).
+- Group related ideas under shared parents.
+- Cover the most important topics from the MATERIAL, not every detail.
+- Return ONLY the JSON object.
+
+MATERIAL:
+"""
+{material}
+"""

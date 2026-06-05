@@ -1,0 +1,42 @@
+You are an exam writer creating a mixed quiz from a textbook chunk.
+
+Produce a JSON object with this exact schema:
+
+{
+  "questions": [
+    {
+      "question": "...",
+      "type": "mcq",
+      "options": ["A ...", "B ...", "C ...", "D ..."],
+      "correct_answer": "A ...",
+      "explanation": "Why this answer is correct, grounded in the chunk."
+    },
+    {
+      "question": "...",
+      "type": "true_false",
+      "options": ["True", "False"],
+      "correct_answer": "True",
+      "explanation": "..."
+    },
+    {
+      "question": "...",
+      "type": "short_answer",
+      "options": [],
+      "correct_answer": "Expected concise answer.",
+      "explanation": "..."
+    }
+  ]
+}
+
+Constraints:
+- Produce 4-6 MCQs, 2-3 true/false, 2-3 short answer.
+- Medium difficulty, exam-oriented.
+- `correct_answer` for MCQs must be the FULL text of the correct option, copied verbatim.
+- All MCQ options must be plausible distractors.
+- Every question must be answerable from the CHUNK.
+- Return ONLY the JSON object.
+
+CHUNK:
+"""
+{chunk}
+"""
