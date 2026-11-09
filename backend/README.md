@@ -7,7 +7,7 @@ chunking + multi-provider LLM generation) and exposes it as a REST API.
 ## Stack
 
 - Django 5 + Django REST Framework
-- SQLite (dev) — swap `DATABASES` for Postgres in production
+- PostgreSQL (connection configured via `DB_*` variables)
 - Reuses `prototype/study_assistant` for extraction, chunking and LLM calls
 - Background processing via a daemon thread (no extra broker needed for dev)
 
@@ -19,7 +19,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-cp .env.example .env          # then edit as needed
+cp .env.example .env          # then edit as needed (DB_* must point at a running PostgreSQL)
 
 python manage.py migrate
 python manage.py runserver 8000
@@ -45,7 +45,7 @@ To use real LLM generation (matching the prototype output quality):
 ```env
 USE_REAL_LLM=True
 LLM_PROVIDER=openai          # openai | anthropic | gemini
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=your-key
 ```
 
 LLM responses are cached on disk (shared with the prototype's `cache/`), so
@@ -102,10 +102,13 @@ backend/
 python manage.py test study
 ```
 
+Django creates a temporary test database, so the PostgreSQL user needs the
+`CREATEDB` privilege.
+
 ## Production notes
 
 - Set `DJANGO_DEBUG=False`, a strong `DJANGO_SECRET_KEY`, and proper
   `DJANGO_ALLOWED_HOSTS` / `CORS_ALLOWED_ORIGINS`.
 - Replace the threaded background processing with Celery + Redis for
   concurrency and durability.
-- Serve uploaded media from object storage (e.g. S3) and switch to Postgres.
+- Serve uploaded media from object storage (e.g. S3).

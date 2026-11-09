@@ -19,8 +19,9 @@ cp .env.example .env
 jupyter lab notebooks/pdf_study_assistant.ipynb
 ```
 
-Open the notebook and run the cells top-to-bottom. The first cell prompts
-for the PDF path (defaults to `sample_pdfs/textbook.pdf`).
+Open the notebook and run the cells top-to-bottom. The first cell installs
+the dependencies into the kernel (restart the kernel afterwards). Set
+`PDF_NAME` in the "Load PDF" cell to the file you placed in `sample_pdfs/`.
 
 ## Layout
 
@@ -43,7 +44,7 @@ prototype/
 │   └── models.py
 ├── prompts/                              # Editable prompt templates
 ├── sample_pdfs/                          # Drop test PDFs here (git-ignored)
-├── outputs/                              # Generated assets per run
+├── outputs/                              # Generated assets per run (git-ignored)
 └── requirements.txt
 ```
 
@@ -56,5 +57,6 @@ prototype/
   for the chosen provider needs valid credentials.
 - **Graphviz:** the mind map renderer requires the `graphviz` system
   binary (`brew install graphviz` on macOS).
-- **TTS:** audio synthesis is optional. Set `TTS_PROVIDER=openai` to use
-  OpenAI's `audio.speech` endpoint.
+- **TTS:** audio synthesis is optional. Set `SYNTHESIZE_AUDIO = True` in the
+  audio cell to render the lesson to MP3 with OpenAI's `audio.speech`
+  endpoint (`OPENAI_TTS_MODEL` / `OPENAI_TTS_VOICE`).
