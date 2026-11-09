@@ -13,6 +13,10 @@ cache/
 outputs/
 !outputs/.gitkeep
 
+# Sample PDFs (keep the folder, not the files)
+sample_pdfs/*
+!sample_pdfs/.gitkeep
+
 # Local secrets
 .env
 
